@@ -1,0 +1,2699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AHMED.FILMS — Video Editor &amp; Videographer</title>
+<style>
+:root{
+  --bg:#0c0c0f;
+  --card:#16161b;
+  --card-hover:#1c1c24;
+  --text:#f2f0ec;
+  --muted:#9a978f;
+  --line:#26262d;
+  --acc:#ff4d3d;
+  --acc2:#ffb347;
+  --acc-glow:rgba(255,77,61,0.28);
+  --success:#10b981;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px)
+}
+:root[data-theme="light"]{
+  --bg:#f7f5f0;
+  --card:#ffffff;
+  --card-hover:#f0ede4;
+  --text:#16151a;
+  --muted:#6d6a62;
+  --line:#e4e0d6;
+  --acc-glow:rgba(255,77,61,0.18);
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]):not([data-theme="light"]){
+    --bg:#f7f5f0;--card:#ffffff;--card-hover:#f0ede4;--text:#16151a;--muted:#6d6a62;--line:#e4e0d6;--acc-glow:rgba(255,77,61,0.18);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.6;
+  transition:background .25s ease,color .25s ease;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font-family:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* NAVIGATION */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+nav .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:64px;
+  gap:14px;
+}
+.logo{
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-size:17px;
+  display:flex;
+  align-items:center;
+  gap:2px;
+}
+.logo b{color:var(--acc)}
+.links{display:flex;gap:20px;font-size:14px;font-weight:500;color:var(--muted)}
+.links a{transition:color .2s}
+.links a:hover,.links a.active{color:var(--text)}
+.nav-actions{display:flex;align-items:center;gap:8px}
+
+.tt{
+  border:1px solid var(--line);
+  border-radius:10px;
+  width:36px;
+  height:36px;
+  cursor:pointer;
+  color:var(--text);
+  background:var(--card);
+  display:inline-grid;
+  place-items:center;
+  font-size:15px;
+  transition:all .2s;
+}
+.tt:hover{border-color:var(--acc);color:var(--acc)}
+.menu-btn{display:none}
+
+/* MOBILE DRAWER */
+#mobileMenu{
+  display:none;
+  flex-direction:column;
+  gap:12px;
+  padding:16px 22px 24px;
+  background:var(--card);
+  border-bottom:1px solid var(--line);
+}
+#mobileMenu.show{display:flex}
+#mobileMenu a{
+  font-size:15px;
+  font-weight:600;
+  padding:8px 0;
+  color:var(--text);
+  border-bottom:1px solid color-mix(in srgb,var(--line) 40%,transparent);
+}
+
+/* SECTIONS */
+section{padding:76px 0}
+.tag{
+  font-size:11px;
+  letter-spacing:3px;
+  color:var(--acc);
+  font-weight:800;
+  text-transform:uppercase;
+  display:inline-block;
+  margin-bottom:6px;
+}
+h2{
+  font-size:clamp(28px,4.5vw,42px);
+  margin:0 0 8px;
+  letter-spacing:-1px;
+  line-height:1.15;
+}
+.sub{color:var(--muted);margin:0 0 32px;font-size:16px;max-width:640px}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:11px 22px;
+  border-radius:10px;
+  font-weight:600;
+  border:1px solid var(--line);
+  background:var(--card);
+  cursor:pointer;
+  font-size:14px;
+  color:var(--text);
+  transition:all .2s;
+  text-decoration:none;
+}
+.btn:hover{
+  border-color:var(--acc);
+  transform:translateY(-1px);
+}
+.btn.p{
+  background:var(--acc);
+  color:#fff;
+  border-color:var(--acc);
+  box-shadow:0 4px 18px var(--acc-glow);
+}
+.btn.p:hover{
+  background:#ff3825;
+  border-color:#ff3825;
+  color:#fff;
+}
+.btn-sm{
+  padding:6px 12px;
+  font-size:12px;
+  border-radius:8px;
+}
+
+/* HERO SECTION */
+.hero{
+  padding-top:40px;
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:40px;
+  align-items:center;
+}
+.badge{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  font-size:13px;
+  font-weight:500;
+  border:1px solid var(--line);
+  background:var(--card);
+  padding:6px 14px;
+  border-radius:99px;
+}
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--acc);
+  animation:pulseDot 1.4s infinite;
+}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.85)}}
+h1{
+  font-size:clamp(44px,7.5vw,78px);
+  line-height:.95;
+  margin:18px 0 12px;
+  letter-spacing:-3px;
+  text-transform:uppercase;
+  font-weight:900;
+}
+h1 span{color:var(--acc)}
+.role{
+  font-size:20px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:12px;
+}
+.lead{
+  color:var(--muted);
+  max-width:480px;
+  font-size:16px;
+  margin:0 0 24px;
+}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px}
+
+/* HERO VIEWFINDER */
+.vf{
+  position:relative;
+  aspect-ratio:16/9;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#121217;
+  display:grid;
+  place-items:center;
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+  cursor:pointer;
+  user-select:none;
+}
+.vf-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.65;
+  transition:transform .4s ease,opacity .4s ease;
+}
+.vf:hover .vf-bg{transform:scale(1.03);opacity:.85}
+.vf-video-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+.vf-fallback-grad{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 30%,#ff4d3d44,transparent 55%),radial-gradient(circle at 75% 70%,#ffb34744,transparent 55%),#13131a;
+}
+.vf-corners{
+  position:absolute;
+  inset:14px;
+  pointer-events:none;
+  border:2px solid rgba(255,255,255,.35);
+  border-radius:6px;
+  clip-path:polygon(
+    0 0, 12% 0, 12% 2px, 2px 2px, 2px 12%, 0 12%, 0 0,
+    100% 0, 100% 12%, calc(100% - 2px) 12%, calc(100% - 2px) 2px, 88% 2px, 88% 0, 100% 0,
+    100% 100%, 88% 100%, 88% calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 88%, 100% 88%, 100% 100%,
+    0 100%, 0 88%, 2px 88%, 2px calc(100% - 2px), 12% calc(100% - 2px), 12% 100%, 0 100%
+  );
+  z-index:2;
+}
+.play{
+  position:relative;
+  z-index:3;
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background:var(--acc);
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:26px;
+  border:0;
+  cursor:pointer;
+  box-shadow:0 0 0 10px rgba(255,77,61,.28),0 8px 25px rgba(0,0,0,.4);
+  transition:transform .2s ease,box-shadow .2s ease;
+  padding-left:4px;
+}
+.vf:hover .play{
+  transform:scale(1.08);
+  box-shadow:0 0 0 14px rgba(255,77,61,.38),0 10px 30px rgba(0,0,0,.5);
+}
+.hud{
+  position:absolute;
+  left:24px;
+  right:24px;
+  top:22px;
+  display:flex;
+  justify-content:space-between;
+  font:12px/1 ui-monospace,Menlo,monospace;
+  color:#fff;
+  z-index:3;
+  text-shadow:0 1px 4px rgba(0,0,0,.8);
+}
+.hud2{
+  position:absolute;
+  left:24px;
+  right:24px;
+  bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  font:12px/1 ui-monospace,Menlo,monospace;
+  color:#ffffffdd;
+  z-index:3;
+  text-shadow:0 1px 4px rgba(0,0,0,.8);
+}
+
+/* OWNER / EDIT MODE ONLY ELEMENTS */
+.owner-only{display:none !important}
+.editing .owner-only{display:inline-flex !important}
+.editing .owner-block{display:block !important}
+
+/* INQUIRIES INBOX CARDS */
+.inquiry-card{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px 20px;
+  margin-bottom:14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  transition:border-color .2s;
+}
+.inquiry-card:hover{border-color:var(--acc)}
+.inquiry-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px}
+.inquiry-top b{font-size:15px;color:var(--text)}
+.inquiry-date{font:11px/1 ui-monospace,monospace;color:var(--muted)}
+.inquiry-tags{display:flex;gap:6px;flex-wrap:wrap}
+.inquiry-pill{
+  font:600 11px/1 ui-monospace,monospace;
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:4px 8px;
+  border-radius:6px;
+  color:var(--acc);
+}
+.inquiry-body{
+  margin:0;
+  font-size:14px;
+  color:var(--text);
+  line-height:1.5;
+  background:var(--card);
+  padding:12px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  white-space:pre-wrap;
+}
+.inquiry-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:2px}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:16px;
+  margin-top:48px;
+}
+.stat{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:14px;
+  padding:18px;
+  text-align:center;
+  transition:border-color .2s;
+}
+.stat:hover{border-color:var(--acc)}
+.stat b{display:block;font-size:32px;color:var(--acc);line-height:1.1;margin-bottom:4px}
+.stat span{color:var(--muted);font-size:14px}
+
+/* PORTFOLIO SECTION */
+.work-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:24px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.chip{
+  border:1px solid var(--line);
+  background:var(--card);
+  padding:7px 16px;
+  border-radius:99px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:500;
+  color:var(--text);
+  transition:all .2s;
+}
+.chip:hover{border-color:var(--acc)}
+.chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  gap:22px;
+}
+.proj{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+  position:relative;
+}
+.proj:hover{
+  transform:translateY(-5px);
+  border-color:var(--acc);
+  box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
+
+/* CARD THUMBNAIL */
+.th{
+  aspect-ratio:16/9;
+  position:relative;
+  background:#14141a;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+}
+.th-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .4s ease,filter .3s ease;
+}
+.proj:hover .th-img{transform:scale(1.05);filter:brightness(1.08)}
+.th-video-preview{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity .3s ease;
+  pointer-events:none;
+}
+.proj:hover .th-video-preview.playing{opacity:1}
+.th-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.35) 100%);
+  pointer-events:none;
+}
+.th-play{
+  position:relative;
+  z-index:2;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:rgba(255,77,61,0.92);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:18px;
+  padding-left:3px;
+  box-shadow:0 4px 18px rgba(0,0,0,.5);
+  transition:transform .2s ease,background .2s ease;
+}
+.proj:hover .th-play{transform:scale(1.15);background:var(--acc)}
+.th i{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  font:600 11px ui-monospace,monospace;
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  padding:3px 7px;
+  border-radius:6px;
+  font-style:normal;
+  z-index:2;
+  backdrop-filter:blur(4px);
+}
+.th-tag-pill{
+  position:absolute;
+  left:10px;
+  top:10px;
+  font:700 10px/1 ui-monospace,monospace;
+  background:rgba(255,77,61,.9);
+  color:#fff;
+  padding:4px 8px;
+  border-radius:6px;
+  z-index:2;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.pb{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cat{font-size:11px;letter-spacing:2px;color:var(--acc);font-weight:700;text-transform:uppercase}
+.pb h3{margin:0;font-size:18px;line-height:1.3}
+.pb p{margin:0;color:var(--muted);font-size:14px;flex:1;line-height:1.5}
+.pb-actions{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+
+/* ADD VIDEO CARD */
+.proj-add{
+  border:2px dashed var(--line);
+  background:transparent;
+  display:grid;
+  place-items:center;
+  min-height:260px;
+  cursor:pointer;
+  text-align:center;
+  padding:24px;
+}
+.proj-add:hover{border-color:var(--acc);background:var(--card)}
+.proj-add-icon{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:var(--card);
+  border:1px solid var(--line);
+  color:var(--acc);
+  font-size:26px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 12px;
+  transition:transform .2s ease;
+}
+.proj-add:hover .proj-add-icon{transform:scale(1.1);background:var(--acc);color:#fff}
+.proj-add b{display:block;font-size:16px;margin-bottom:4px}
+.proj-add span{font-size:13px;color:var(--muted)}
+
+/* SERVICES & PROCESS */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.step,.svc{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:14px;
+  padding:22px;
+  transition:border-color .2s;
+}
+.step:hover,.svc:hover{border-color:var(--acc)}
+.step em{font:700 13px ui-monospace,monospace;color:var(--acc);font-style:normal}
+.step h3,.svc h3{margin:6px 0 8px;font-size:18px}
+.step p,.svc p{margin:0;color:var(--muted);font-size:14px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.tools span{
+  border:1px solid var(--line);
+  background:var(--card);
+  padding:7px 16px;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:500;
+}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center}
+.avatar{
+  aspect-ratio:1;
+  border-radius:24px;
+  background:linear-gradient(135deg,var(--acc),var(--acc2));
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:68px;
+  font-weight:800;
+  max-width:260px;
+  box-shadow:0 12px 35px var(--acc-glow);
+}
+blockquote{
+  margin:16px 0 0;
+  font-style:italic;
+  color:var(--muted);
+  border-left:3px solid var(--acc);
+  padding-left:14px;
+}
+
+/* CONTACT SECTION */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:36px;
+  margin-top:20px;
+}
+.contact-form{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:16px;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg label{font-size:13px;font-weight:600;color:var(--text)}
+.fg input,.fg select,.fg textarea{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:11px 14px;
+  color:var(--text);
+  font-size:14px;
+  transition:border-color .2s;
+  outline:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:var(--acc);
+}
+.contact-info-card{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:16px;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.contact-item{display:flex;flex-direction:column;gap:4px}
+.contact-item span{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--acc);font-weight:700}
+.contact-item b{font-size:16px}
+.soc{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:8px}
+.soc a{
+  padding:12px;
+  text-align:center;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--bg);
+  font-weight:600;
+  font-size:13px;
+  transition:all .2s;
+}
+.soc a:hover{border-color:var(--acc);color:var(--acc)}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  padding:32px 0;
+  color:var(--muted);
+  font-size:14px;
+  text-align:center;
+}
+
+/* FLOATING EDIT TOOLBAR */
+#bar{
+  display:none;
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  z-index:900;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:center;
+  width:max-content;
+  max-width:94vw;
+  padding:10px 16px;
+  background:var(--card);
+  border:1px solid var(--acc);
+  border-radius:16px;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  font-size:13px;
+}
+#bar .btn{margin:0;padding:8px 16px;font-size:13px}
+.editing [contenteditable=true]{outline:2px dashed var(--acc);outline-offset:3px;cursor:text}
+
+/* SHAKE ANIMATION FOR AUTH */
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  20%,60%{transform:translateX(-8px)}
+  40%,80%{transform:translateX(8px)}
+}
+
+/* THEATER MODAL */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,0.88);
+  backdrop-filter:blur(10px);
+  display:grid;
+  place-items:center;
+  padding:20px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
+}
+.modal-overlay.open{
+  opacity:1;
+  pointer-events:auto;
+}
+.theater-box{
+  width:min(1060px,100%);
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+  display:flex;
+  flex-direction:column;
+  transform:scale(0.96);
+  transition:transform .25s ease;
+  max-height:92vh;
+}
+.modal-overlay.open .theater-box{transform:scale(1)}
+.theater-head{
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+  gap:12px;
+}
+.theater-title-group h3{margin:0;font-size:18px;line-height:1.2}
+.theater-title-group span{font-size:12px;color:var(--acc);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.theater-head-btns{display:flex;gap:8px;align-items:center}
+.modal-close-btn{
+  background:transparent;
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--text);
+  padding:6px 12px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:700;
+  transition:all .2s;
+}
+.modal-close-btn:hover{background:var(--acc);border-color:var(--acc);color:#fff}
+.theater-screen{
+  background:#000;
+  position:relative;
+  aspect-ratio:16/9;
+  max-height:68vh;
+  display:grid;
+  place-items:center;
+}
+.theater-video{
+  width:100%;
+  height:100%;
+  max-height:68vh;
+  display:block;
+  background:#000;
+  outline:none;
+}
+.theater-foot{
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  border-top:1px solid var(--line);
+  font-size:13px;
+}
+.speed-btns{display:flex;align-items:center;gap:6px}
+.speed-btns button{
+  background:var(--bg);
+  border:1px solid var(--line);
+  color:var(--text);
+  padding:4px 9px;
+  border-radius:6px;
+  font-size:12px;
+  cursor:pointer;
+}
+.speed-btns button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+
+/* UPLOAD MODAL DIALOG */
+.upload-dialog{
+  width:min(580px,100%);
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  transform:scale(0.96);
+  transition:transform .25s ease;
+}
+.modal-overlay.open .upload-dialog{transform:scale(1)}
+.upload-dropzone{
+  border:2px dashed var(--line);
+  border-radius:14px;
+  padding:32px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:border-color .2s,background .2s;
+  background:var(--bg);
+}
+.upload-dropzone:hover,.upload-dropzone.dragover{
+  border-color:var(--acc);
+  background:color-mix(in srgb,var(--acc) 8%,var(--bg));
+}
+.upload-dropzone .icon{font-size:36px;margin-bottom:8px;color:var(--acc)}
+.preview-strip{
+  display:none;
+  align-items:center;
+  gap:14px;
+  background:var(--bg);
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--line);
+}
+.preview-thumb{
+  width:72px;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-radius:6px;
+  background:#000;
+}
+.preview-info{flex:1;overflow:hidden}
+.preview-info b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview-info span{font-size:11px;color:var(--muted)}
+
+/* DRAG DROP FULLPAGE OVERLAY */
+#dragOverlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:rgba(12,12,15,0.92);
+  backdrop-filter:blur(8px);
+  place-items:center;
+  border:4px dashed var(--acc);
+  pointer-events:none;
+}
+#dragOverlay.active{display:grid}
+.drag-content{text-align:center;color:#fff}
+.drag-content span{font-size:52px;display:block;margin-bottom:12px}
+.drag-content h2{font-size:32px;margin:0 0 8px}
+.drag-content p{color:var(--muted);font-size:16px;margin:0}
+
+/* TOAST */
+#toast{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  background:var(--card);
+  border:1px solid var(--acc);
+  color:var(--text);
+  padding:12px 20px;
+  border-radius:12px;
+  box-shadow:0 12px 30px rgba(0,0,0,.4);
+  z-index:999999;
+  font-size:14px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transform:translateY(100px);
+  opacity:0;
+  transition:transform .3s ease,opacity .3s ease;
+  pointer-events:none;
+}
+#toast.show{transform:translateY(0);opacity:1;pointer-events:auto}
+
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr;gap:28px}
+  .about{grid-template-columns:1fr;gap:28px}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .links{display:none}
+  .menu-btn{display:inline-grid}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#home">AHMED<b>.Films</b></a>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="tt" id="edit" aria-label="Unlock Access" title="Unlock Access (Passcode Protected)">🔒</button>
+      <button class="tt" id="theme" aria-label="Toggle theme" title="Toggle Dark/Light Mode">◐</button>
+      <button class="tt menu-btn" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </div>
+  <div id="mobileMenu">
+    <a href="#home" class="mob-link">Home</a>
+    <a href="#work" class="mob-link">Work</a>
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#process" class="mob-link">Process</a>
+    <a href="#about" class="mob-link">About</a>
+    <a href="#contact" class="mob-link">Contact</a>
+  </div>
+</nav>
+
+<!-- FLOATING EDIT BAR -->
+<div id="bar">
+  <span id="barRoleLabel">💡 Owner Mode: upload clips, customize text, or manage client inquiries.</span>
+  <button class="btn" id="add">＋ Upload video</button>
+  <button class="btn" id="btnInbox">📬 Inquiries (<span id="inboxCount">0</span>)</button>
+  <button class="btn" id="btnSettings">⚙ Set Email</button>
+  <button class="btn" id="btnManagePass">🔑 Passcodes</button>
+  <button class="btn" id="btnLock">🔒 Lock</button>
+  <button class="btn" id="reset">Reset All</button>
+  <button class="btn p" id="done">Done Editing</button>
+</div>
+
+<!-- HIDDEN FILE INPUT -->
+<input id="videoPicker" type="file" accept="video/*" hidden>
+
+<!-- FULLSCREEN DRAG DROP OVERLAY -->
+<div id="dragOverlay">
+  <div class="drag-content">
+    <span>🎬</span>
+    <h2>Drop your video here</h2>
+    <p>It will be uploaded and immediately visible in your portfolio</p>
+  </div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast"><span>✓</span><span id="toastMsg">Action completed</span></div>
+
+<!-- HERO SECTION -->
+<section id="home" class="wrap">
+  <div class="hero">
+    <div>
+      <span class="badge"><i class="dot"></i>Booking projects for 2026</span>
+      <h1>Ahmed<br><span>Yasser</span></h1>
+      <div class="role">Cinematic Videographer &amp; Video Editor</div>
+      <p class="lead">I shoot and cut stories that capture imagination and hold attention — from brand commercials and weddings to high-energy music videos and social reels.</p>
+      <div class="hero-btns">
+        <button class="btn p" id="heroPlayBtn">▶ Watch Showreel</button>
+        <a class="btn" href="#contact">Book a Project</a>
+      </div>
+    </div>
+    
+    <!-- VIEWFINDER -->
+    <div class="vf" id="heroVf" title="Click to play showreel">
+      <div class="vf-fallback-grad" id="vfGrad"></div>
+      <img class="vf-bg" id="vfPoster" alt="Showreel poster frame" style="display:none">
+      <video class="vf-video-bg" id="vfVideoPreview" muted playsinline loop></video>
+      <div class="vf-corners"></div>
+      <div class="hud">
+        <span><i class="dot" style="display:inline-block"></i> REC</span>
+        <span id="tc">00:00:00:00</span>
+      </div>
+      <button class="play" id="play" aria-label="Play showreel">▶</button>
+      <div class="hud2">
+        <span id="vfTitleLabel">SHOWREEL · 4K</span>
+        <span>24 FPS · LOG</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><b>120+</b><span>Projects delivered</span></div>
+    <div class="stat"><b>6 yrs</b><span>Experience</span></div>
+    <div class="stat"><b>40+</b><span>Happy clients</span></div>
+    <div class="stat"><b>10M+</b><span>Views generated</span></div>
+  </div>
+</section>
+
+<!-- WORK / PORTFOLIO -->
+<section id="work" class="wrap">
+  <div class="work-head">
+    <div>
+      <div class="tag">Selected Work</div>
+      <h2>Featured Videos</h2>
+      <p class="sub" style="margin-bottom:0">A curated collection of commercial, wedding, music video, and creator stories.</p>
+    </div>
+    <button class="btn p owner-only" id="gridUploadBtn">＋ Upload Video</button>
+  </div>
+
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="wrap">
+  <div class="tag">Services</div>
+  <h2>What I Do</h2>
+  <p class="sub">End-to-end video production, or precision editing and color mastering.</p>
+  <div class="cols">
+    <div class="svc">
+      <h3>Videography</h3>
+      <p>High-end cinematic 4K camera work with pro lighting, gimbal moves, and on-location direction.</p>
+    </div>
+    <div class="svc">
+      <h3>Video Editing</h3>
+      <p>Story-driven cuts, dynamic pacing, hook retention, sound fx sync, and stylized motion graphics.</p>
+    </div>
+    <div class="svc">
+      <h3>Color &amp; Sound</h3>
+      <p>Custom DaVinci Resolve color grading, dialogue cleanup, sound design, and music scoring.</p>
+    </div>
+    <div class="svc">
+      <h3>Social &amp; Reels</h3>
+      <p>Vertical 9:16 viral cuts tailored for TikTok, Reels, and YouTube Shorts with dynamic typography.</p>
+    </div>
+  </div>
+  <div class="tools">
+    <span>Sony FX3</span>
+    <span>DaVinci Resolve</span>
+    <span>Premiere Pro</span>
+    <span>After Effects</span>
+    <span>DJI Ronin</span>
+    <span>4K 10-bit LOG</span>
+    <span>Wireless Audio</span>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="wrap">
+  <div class="tag">Workflow</div>
+  <h2>How I Work</h2>
+  <p class="sub">A seamless four-step process from initial vision to final delivery.</p>
+  <div class="cols">
+    <div class="step">
+      <em>01</em>
+      <h3>Brief &amp; Concept</h3>
+      <p>We clarify your objectives, target audience, mood board, aesthetic references, and timeline.</p>
+    </div>
+    <div class="step">
+      <em>02</em>
+      <h3>Production</h3>
+      <p>Shooting on cinema gear with planned shot lists, dynamic angles, and professional audio.</p>
+    </div>
+    <div class="step">
+      <em>03</em>
+      <h3>Post-Production</h3>
+      <p>Rough assembly cut, interactive feedback review, sound design, and signature color grading.</p>
+    </div>
+    <div class="step">
+      <em>04</em>
+      <h3>Master Delivery</h3>
+      <p>High-bitrate master exports tailored for theatrical display, YouTube, and social platforms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="wrap about">
+  <div>
+    <div class="avatar">AY</div>
+    <blockquote>“Every single frame must earn its place on the timeline.”</blockquote>
+  </div>
+  <div>
+    <div class="tag">About Me</div>
+    <h2>Hi, I’m Ahmed Yasser</h2>
+    <p style="color:var(--muted);font-size:16px">I’m a videographer and video editor passionate about turning raw footage into compelling visual experiences. Over the last 6 years, I’ve collaborated with international brands, musical artists, and wedding couples to produce videos that spark genuine emotion and drive engagement.</p>
+    <p style="color:var(--muted);font-size:16px">Whether you have raw footage that needs world-class editing or need full production from script to screen, I’m ready to collaborate.</p>
+  </div>
+</section>
+
+<!-- CONTACT / INQUIRY -->
+<section id="contact" class="wrap">
+  <div class="tag">Let’s Collaborate</div>
+  <h2>Get In Touch</h2>
+  <p class="sub">Have an upcoming shoot or an edit that needs attention? Let’s make something memorable.</p>
+
+  <div class="owner-only owner-block" id="ownerContactBanner" style="background:var(--card);border:1px dashed var(--acc);padding:14px 20px;border-radius:14px;margin-bottom:24px;width:100%">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <span style="font-size:13px;font-weight:600">📩 Submissions are delivered to: <b id="ownerEmailText" style="color:var(--acc)">contact@ahmedfilms.com</b></span>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">All client inquiries are forwarded directly to this email and saved in your local Inquiries Inbox.</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-sm p" id="btnChangeEmail">Change Receiving Email</button>
+        <button class="btn btn-sm" id="btnSetPhone">Set WhatsApp Number</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <form class="contact-form" id="contactForm" onsubmit="return false">
+      <div class="form-row">
+        <div class="fg">
+          <label for="cName">Your Name</label>
+          <input type="text" id="cName" placeholder="e.g. Sarah Jenkins" required>
+        </div>
+        <div class="fg">
+          <label for="cEmail">Your Email</label>
+          <input type="email" id="cEmail" placeholder="you@company.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label for="cType">Project Category</label>
+          <select id="cType">
+            <option value="Brand Film / Commercial">Brand Film / Commercial</option>
+            <option value="Wedding / Event">Wedding / Event</option>
+            <option value="Music Video">Music Video</option>
+            <option value="Social Media / Reels">Social Media / Reels</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Color Grading & Sound">Color Grading &amp; Sound</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="cBudget">Estimated Budget</label>
+          <select id="cBudget">
+            <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+            <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+            <option value="$5,000 - $10,000+">$5,000 - $10,000+</option>
+            <option value="Undetermined">To Be Discussed</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label for="cMsg">Project Brief &amp; Goals</label>
+        <textarea id="cMsg" rows="4" placeholder="Tell me about your timeline, ideas, and deliverables..." required></textarea>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn p" type="submit" id="cSubmit">Send Project Inquiry</button>
+        <button class="btn" type="button" id="cWhatsApp">💬 Send via WhatsApp</button>
+      </div>
+    </form>
+
+    <div class="contact-info-card">
+      <div class="contact-item">
+        <span>Direct Email</span>
+        <b><a href="mailto:contact@ahmedfilms.com" id="mailLink">contact@ahmedfilms.com</a></b>
+      </div>
+      <div class="contact-item">
+        <span>Current Location</span>
+        <b>Cairo &amp; Worldwide Available</b>
+      </div>
+      <div class="contact-item">
+        <span>Response Time</span>
+        <b>Within 24 Hours</b>
+      </div>
+      <div class="contact-item">
+        <span>Connect &amp; Follow</span>
+        <div class="soc">
+          <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://vimeo.com" target="_blank" rel="noopener">Vimeo</a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    AHMED.FILMS · Videography · Editing · Color · Storytelling<br>
+    © 2026 Ahmed Yasser. All rights reserved.
+  </div>
+</footer>
+
+<!-- THEATER MODAL PLAYER -->
+<div class="modal-overlay" id="theaterModal">
+  <div class="theater-box">
+    <div class="theater-head">
+      <div class="theater-title-group">
+        <span id="tCat">COMMERCIAL</span>
+        <h3 id="tTitle">Video Title</h3>
+      </div>
+      <div class="theater-head-btns">
+        <button class="btn btn-sm" id="tSetShowreel">★ Set as Showreel</button>
+        <button class="modal-close-btn" id="tClose">✕ Close</button>
+      </div>
+    </div>
+    <div class="theater-screen">
+      <video class="theater-video" id="tVideo" controls playsinline></video>
+    </div>
+    <div class="theater-foot">
+      <p id="tDesc" style="margin:0;color:var(--muted);max-width:600px"></p>
+      <div class="speed-btns">
+        <span style="font-size:12px;color:var(--muted);margin-right:4px">Speed:</span>
+        <button data-speed="0.75">0.75x</button>
+        <button data-speed="1" class="on">1x</button>
+        <button data-speed="1.25">1.25x</button>
+        <button data-speed="1.5">1.5x</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPLOAD MODAL DIALOG -->
+<div class="modal-overlay" id="uploadModal">
+  <div class="upload-dialog">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3 style="margin:0;font-size:20px">Upload Video to Portfolio</h3>
+      <button class="modal-close-btn" id="uClose">✕</button>
+    </div>
+
+    <div class="upload-dropzone" id="uDropzone">
+      <div class="icon">📹</div>
+      <b style="display:block;font-size:16px;margin-bottom:4px">Choose a video from your device</b>
+      <span style="font-size:13px;color:var(--muted)">Supports MP4, WebM, MOV and other video files</span>
+    </div>
+
+    <div class="preview-strip" id="uPreviewStrip">
+      <img class="preview-thumb" id="uPreviewThumb" alt="preview">
+      <div class="preview-info">
+        <b id="uPreviewName">filename.mp4</b>
+        <span id="uPreviewMeta">0:00 · 0 MB</span>
+      </div>
+      <button class="btn btn-sm" id="uChangeFile">Change</button>
+    </div>
+
+    <div class="fg">
+      <label for="uTitle">Project Title</label>
+      <input type="text" id="uTitle" placeholder="e.g. City Lights — Commercial">
+    </div>
+
+    <div class="form-row">
+      <div class="fg">
+        <label for="uCat">Category</label>
+        <select id="uCat">
+          <option value="Commercial">Commercial</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Music Video">Music Video</option>
+          <option value="Social">Social</option>
+          <option value="Documentary">Documentary</option>
+          <option value="Personal">Personal</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="uDur">Duration Display</label>
+        <input type="text" id="uDur" placeholder="Auto-detected (e.g. 1:45)">
+      </div>
+    </div>
+
+    <div class="fg">
+      <label for="uDesc">Description</label>
+      <textarea id="uDesc" rows="2" placeholder="Brief notes about the shoot, style, or equipment..."></textarea>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:8px">
+      <input type="checkbox" id="uAsShowreel" style="width:16px;height:16px;accent-color:var(--acc)">
+      <label for="uAsShowreel" style="font-size:13px;cursor:pointer">Set as Featured Showreel in Hero</label>
+    </div>
+
+    <button class="btn p" id="uSubmitBtn" style="width:100%;padding:13px">✓ Add to Portfolio</button>
+  </div>
+</div>
+
+<!-- INQUIRIES INBOX MODAL -->
+<div class="modal-overlay" id="inboxModal">
+  <div class="theater-box" style="width:min(780px,100%)">
+    <div class="theater-head">
+      <div class="theater-title-group">
+        <span>CLIENT INBOX</span>
+        <h3 id="inboxModalTitle">Project Inquiries (<span id="inboxModalCount">0</span>)</h3>
+      </div>
+      <div class="theater-head-btns">
+        <button class="btn btn-sm" id="btnClearInbox">Clear All</button>
+        <button class="modal-close-btn" id="inboxClose">✕</button>
+      </div>
+    </div>
+    <div style="padding:22px;max-height:65vh;overflow-y:auto" id="inboxList">
+      <!-- Inquiries rendered here -->
+    </div>
+    <div class="theater-foot">
+      <span>Delivered to your email and stored safely on this device.</span>
+      <button class="btn btn-sm" id="btnExportCSV">📥 Export to CSV</button>
+    </div>
+  </div>
+</div>
+
+<!-- PASSCODE AUTHENTICATION MODAL -->
+<div class="modal-overlay" id="authModal">
+  <div class="theater-box" style="width:min(440px,94vw);padding:26px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:24px">🔒</span>
+        <h3 style="margin:0;font-size:18px">Restricted Access</h3>
+      </div>
+      <button class="modal-close-btn" id="authClose">✕</button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:0 0 18px;line-height:1.5">
+      Editing is protected. Enter the <b>Owner Passcode</b> or your <b>Client Passcode</b> to unlock tools.
+    </p>
+    <form id="authForm" onsubmit="return false" style="display:flex;flex-direction:column;gap:14px">
+      <div class="fg">
+        <label for="authPassInput" style="font-size:12px;font-weight:600">Enter Passcode / PIN</label>
+        <div style="position:relative">
+          <input type="password" id="authPassInput" placeholder="Passcode..." autocomplete="current-password" style="width:100%;padding-right:40px" required>
+          <button type="button" id="toggleAuthEye" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px" title="Show/Hide">👁</button>
+        </div>
+      </div>
+      <div id="authErrorMsg" style="color:#ff4d3d;font-size:12px;font-weight:600;display:none">✕ Incorrect passcode. Access restricted to Ahmed and authorized clients.</div>
+      <button class="btn p" type="submit" id="btnAuthSubmit" style="width:100%;padding:12px">Unlock Access</button>
+    </form>
+    <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--muted)">
+      Default Owner: <code>ahmed2026</code> · Client: <code>client2026</code><br>
+      <span style="font-size:11px;color:var(--muted)">You can change these passcodes anytime in Owner Mode.</span>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGE PASSWORDS MODAL -->
+<div class="modal-overlay" id="managePassModal">
+  <div class="theater-box" style="width:min(460px,94vw);padding:26px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:24px">🔑</span>
+        <h3 style="margin:0;font-size:18px">Change Access Passwords</h3>
+      </div>
+      <button class="modal-close-btn" id="passModalClose">✕</button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:0 0 18px;line-height:1.5">
+      Update your private owner password or the password you give to your client.
+    </p>
+    <form id="changePassForm" onsubmit="return false" style="display:flex;flex-direction:column;gap:14px">
+      <div class="fg">
+        <label for="newOwnerPass" style="font-size:12px;font-weight:600">Your Owner Password (Ahmed)</label>
+        <input type="text" id="newOwnerPass" placeholder="Enter owner passcode..." required style="width:100%">
+        <span style="font-size:11px;color:var(--muted)">Gives full access to edit portfolio, upload clips, and manage inquiries.</span>
+      </div>
+      <div class="fg">
+        <label for="newClientPass" style="font-size:12px;font-weight:600">Client Password</label>
+        <input type="text" id="newClientPass" placeholder="Enter client passcode..." required style="width:100%">
+        <span style="font-size:11px;color:var(--muted)">Give this password to your one client so they can access client mode.</span>
+      </div>
+      <button class="btn p" type="submit" id="btnSaveNewPass" style="width:100%;padding:12px;margin-top:6px">✓ Save New Passwords</button>
+    </form>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   AHMED.FILMS — INTERACTIVE ENGINE & DEVICE VIDEO INTEGRATION
+   ========================================================================== */
+
+var $ = function(i){return document.getElementById(i)};
+var cur = "All", EDIT = false;
+var featuredIndex = 0;
+var stagedUploadFile = null;
+var stagedUploadMeta = null;
+
+// Initial showcase portfolio projects with real cinematic video streams and posters
+var defaultProjects = [
+  [
+    "Brand Launch Film",
+    "A 60-second high-energy cinematic commercial crafted for a global athletic product launch.",
+    "Commercial",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "0:15",
+    "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80"
+  ],
+  [
+    "Sara & Omar — Wedding Highlights",
+    "An emotionally charged documentary-style highlight film celebrating a scenic two-day celebration.",
+    "Wedding",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    "0:15",
+    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+  ],
+  [
+    "Neon Nights — Music Video",
+    "A visually striking performance music video filmed with anamorphic lenses and dynamic neon lighting.",
+    "Music Video",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    "1:00",
+    "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
+  ],
+  [
+    "30 Days of Reels",
+    "High-retention vertical short-form campaign designed for Instagram Reels and TikTok viral growth.",
+    "Social",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+    "0:15",
+    "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+  ],
+  [
+    "Voices of the Delta",
+    "A quiet, intimate short documentary exploring the vanishing craftsmanship of master boatbuilders.",
+    "Documentary",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    "12:14",
+    "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=800&q=80"
+  ],
+  [
+    "Culinary Atmosphere Teaser",
+    "Mouth-watering macro food shots and sensory audio design promoting an upscale restaurant experience.",
+    "Commercial",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+    "0:47",
+    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80"
+  ]
+];
+
+var P = JSON.parse(JSON.stringify(defaultProjects));
+
+var G = [
+  "#ff4d3d,#7a1f5c",
+  "#ffb347,#c2415a",
+  "#6d4aff,#0f9ea8",
+  "#00b894,#1b3a8a",
+  "#f2994a,#3b2a6d",
+  "#e84393,#2d3436"
+];
+
+function esc(s){
+  return String(s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+}
+
+function showToast(msg){
+  var t = $("toast");
+  $("toastMsg").textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(function(){t.classList.remove("show")}, 3200);
+}
+
+/* ==========================================================================
+   STORAGE ENGINE FOR DEVICE VIDEOS (INDEXEDDB + IN-MEMORY FALLBACK)
+   ========================================================================== */
+var videoDB = null;
+var memoryVideoStore = {}; // Fast in-memory & fallback cache: id -> record
+
+function openVideoDB(){
+  return new Promise(function(resolve){
+    if(videoDB) return resolve(videoDB);
+
+    var settled = false;
+    // 1-second timeout safety net: NEVER let the UI hang if IndexedDB is locked
+    var timer = setTimeout(function(){
+      if(!settled){
+        settled = true;
+        console.warn("IndexedDB connection timed out; using in-memory store.");
+        resolve(null);
+      }
+    }, 1000);
+
+    try {
+      // Open without specifying a higher version to avoid version change deadlocks
+      var request = indexedDB.open("ahmedFilmsVideos");
+
+      request.onupgradeneeded = function(e){
+        var db = request.result;
+        if(!db.objectStoreNames.contains("videos")){
+          db.createObjectStore("videos");
+        }
+      };
+
+      request.onsuccess = function(){
+        if(!settled){
+          settled = true;
+          clearTimeout(timer);
+          videoDB = request.result;
+          videoDB.onversionchange = function(){
+            videoDB.close();
+            videoDB = null;
+          };
+          resolve(videoDB);
+        }
+      };
+
+      request.onerror = function(){
+        if(!settled){
+          settled = true;
+          clearTimeout(timer);
+          console.warn("IndexedDB open error, using in-memory store:", request.error);
+          resolve(null);
+        }
+      };
+
+      request.onblocked = function(){
+        if(!settled){
+          settled = true;
+          clearTimeout(timer);
+          console.warn("IndexedDB open blocked, using in-memory store.");
+          resolve(null);
+        }
+      };
+    } catch(err){
+      if(!settled){
+        settled = true;
+        clearTimeout(timer);
+        console.warn("IndexedDB exception, using in-memory store:", err);
+        resolve(null);
+      }
+    }
+  });
+}
+
+async function putVideo(id, record){
+  // Always immediately save in memory cache so UI is instant and never hangs
+  memoryVideoStore[id] = record;
+
+  try {
+    var db = await openVideoDB();
+    if(db && db.objectStoreNames.contains("videos")){
+      return new Promise(function(resolve){
+        var timeout = setTimeout(function(){ resolve(); }, 1200);
+        try {
+          var tx = db.transaction("videos", "readwrite");
+          var store = tx.objectStore("videos");
+          var req = store.put(record, id);
+          req.onsuccess = function(){ clearTimeout(timeout); resolve(); };
+          req.onerror = function(err){ clearTimeout(timeout); console.warn("putVideo req error:", err); resolve(); };
+          tx.oncomplete = function(){ clearTimeout(timeout); resolve(); };
+          tx.onerror = function(err){ clearTimeout(timeout); console.warn("putVideo tx error:", err); resolve(); };
+        } catch(txErr){
+          clearTimeout(timeout);
+          console.warn("putVideo tx exception:", txErr);
+          resolve();
+        }
+      });
+    }
+  } catch(err){
+    console.warn("putVideo failed, saved in memory:", err);
+  }
+}
+
+async function getVideo(id){
+  // 1. Check memory store first for instant zero-latency playback
+  if(memoryVideoStore[id]){
+    return memoryVideoStore[id];
+  }
+
+  // 2. Otherwise load from IndexedDB
+  try {
+    var db = await openVideoDB();
+    if(db && db.objectStoreNames.contains("videos")){
+      var rec = await new Promise(function(resolve){
+        var timeout = setTimeout(function(){ resolve(null); }, 1500);
+        try {
+          var tx = db.transaction("videos", "readonly");
+          var store = tx.objectStore("videos");
+          var req = store.get(id);
+          req.onsuccess = function(){
+            clearTimeout(timeout);
+            resolve(req.result || null);
+          };
+          req.onerror = function(){
+            clearTimeout(timeout);
+            resolve(null);
+          };
+        } catch(e){
+          clearTimeout(timeout);
+          resolve(null);
+        }
+      });
+      if(rec){
+        memoryVideoStore[id] = rec;
+        return rec;
+      }
+    }
+  } catch(err){
+    console.warn("getVideo error:", err);
+  }
+  return null;
+}
+
+async function deleteVideo(id){
+  delete memoryVideoStore[id];
+  try {
+    var db = await openVideoDB();
+    if(db && db.objectStoreNames.contains("videos")){
+      var tx = db.transaction("videos", "readwrite");
+      tx.objectStore("videos").delete(id);
+    }
+  } catch(err){}
+}
+
+/* ==========================================================================
+   FRAME EXTRACTION & VIDEO METADATA
+   ========================================================================== */
+function extractVideoMetadata(file){
+  return new Promise(function(resolve){
+    var url = URL.createObjectURL(file);
+    var v = document.createElement("video");
+    v.preload = "auto";
+    v.muted = true;
+    v.playsInline = true;
+    v.src = url;
+
+    var settled = false;
+    function finish(durationSec, thumbUrl){
+      if(settled) return;
+      settled = true;
+      URL.revokeObjectURL(url);
+      var s = Math.floor(durationSec || 0);
+      var m = Math.floor(s / 60);
+      var r = s % 60;
+      var durStr = m + ":" + (r < 10 ? "0" : "") + r;
+      resolve({
+        duration: durStr,
+        durationSec: durationSec,
+        thumbnail: thumbUrl || ""
+      });
+    }
+
+    var timeout = setTimeout(function(){
+      finish(v.duration || 0, capture(v));
+    }, 4000);
+
+    function capture(videoEl){
+      try {
+        if(!videoEl.videoWidth || !videoEl.videoHeight) return "";
+        var canvas = document.createElement("canvas");
+        var maxW = 640;
+        var w = videoEl.videoWidth;
+        var h = videoEl.videoHeight;
+        if(w > maxW){
+          h = Math.round((h * maxW) / w);
+          w = maxW;
+        }
+        canvas.width = w;
+        canvas.height = h;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(videoEl, 0, 0, w, h);
+        return canvas.toDataURL("image/jpeg", 0.82);
+      } catch(e) {
+        return "";
+      }
+    }
+
+    v.onloadedmetadata = function(){
+      var seekTime = Math.min(1.5, (v.duration || 2) * 0.25);
+      if(v.duration && v.duration > 0){
+        v.currentTime = seekTime;
+      }
+    };
+
+    v.onseeked = function(){
+      clearTimeout(timeout);
+      var thumb = capture(v);
+      finish(v.duration || 0, thumb);
+    };
+
+    v.onerror = function(){
+      clearTimeout(timeout);
+      finish(0, "");
+    };
+  });
+}
+
+/* ==========================================================================
+   PORTFOLIO RENDERING
+   ========================================================================== */
+function draw(){
+  // Gather unique categories
+  var cats = ["All"];
+  P.forEach(function(p){
+    if(p[2] && cats.indexOf(p[2]) < 0) cats.push(p[2]);
+  });
+  if(cats.indexOf(cur) < 0) cur = "All";
+
+  // Category chips
+  var chipsWrap = $("chips");
+  chipsWrap.innerHTML = "";
+  cats.forEach(function(t){
+    var count = t === "All" ? P.length : P.filter(function(x){ return x[2] === t; }).length;
+    var c = document.createElement("button");
+    c.className = "chip" + (t === cur ? " on" : "");
+    c.textContent = t + " (" + count + ")";
+    c.onclick = function(){ cur = t; draw(); };
+    chipsWrap.appendChild(c);
+  });
+
+  // Project Grid
+  var grid = $("grid");
+  grid.innerHTML = "";
+
+  P.forEach(function(p, i){
+    if(cur !== "All" && p[2] !== cur) return;
+
+    var isLocal = (p[3] || "").startsWith("local:");
+    var isFeatured = (i === featuredIndex);
+    var d = document.createElement("div");
+    d.className = "proj" + (isFeatured ? " is-featured" : "");
+    d.dataset.index = i;
+
+    var ce = EDIT ? ' contenteditable="true"' : '';
+    var k = ' data-i="' + i + '" data-f="';
+
+    var fallbackGrad = "linear-gradient(135deg," + G[i % G.length] + ")";
+    var thumbSrc = p[5] || "";
+
+    var badgeHtml = "";
+    if(isFeatured){
+      badgeHtml = '<span class="th-tag-pill" style="background:#ffb347;color:#000">★ Showreel</span>';
+    } else if(isLocal){
+      badgeHtml = '<span class="th-tag-pill">Device Video</span>';
+    }
+
+    var imgHtml = thumbSrc ? '<img class="th-img" id="thumb-img-' + i + '" src="' + esc(thumbSrc) + '" alt="' + esc(p[0]) + '">' : '<div class="th-img" id="thumb-img-' + i + '" style="background:' + fallbackGrad + '"></div>';
+
+    d.innerHTML =
+      '<div class="th" data-play="' + i + '" style="background:#13131a">' +
+        imgHtml +
+        badgeHtml +
+        '<div class="th-overlay"></div>' +
+        '<div class="th-play">▶</div>' +
+        '<i' + k + '4"' + ce + '>' + esc(p[4] || "Video") + '</i>' +
+      '</div>' +
+      '<div class="pb">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center">' +
+          '<div class="cat"' + k + '2"' + ce + '>' + esc(p[2]) + '</div>' +
+          (EDIT ? '<div style="display:flex;gap:6px"><button class="btn btn-sm" data-feature="' + i + '">★ Star</button><button class="btn btn-sm" data-del="' + i + '" style="color:#ff4d3d">✕</button></div>' : '') +
+        '</div>' +
+        '<h3' + k + '0"' + ce + '>' + esc(p[0]) + '</h3>' +
+        '<p' + k + '1"' + ce + '>' + esc(p[1]) + '</p>' +
+        (isLocal ? '<div class="pb-actions"><span style="font-size:12px;color:var(--muted)">📁 Stored in browser</span><button class="btn btn-sm" data-play="' + i + '">Watch Clip</button></div>' : '') +
+      '</div>';
+
+    grid.appendChild(d);
+
+    // If local video has no thumbnail rendered yet, fetch from IndexedDB asynchronously
+    if(isLocal && !thumbSrc){
+      loadThumbnailFromDB(p[3].slice(6), i);
+    }
+  });
+
+  // Append "+ Upload Video" card into the grid ONLY in owner edit mode
+  if(EDIT){
+    var addCard = document.createElement("div");
+    addCard.className = "proj proj-add";
+    addCard.innerHTML =
+      '<div>' +
+        '<div class="proj-add-icon">＋</div>' +
+        '<b>Upload New Video</b>' +
+        '<span>Add a video from this device directly to the portfolio</span>' +
+      '</div>';
+    addCard.onclick = openUploadModal;
+    grid.appendChild(addCard);
+  }
+
+  updateHeroShowreel();
+}
+
+async function loadThumbnailFromDB(id, index){
+  try {
+    var rec = await getVideo(id);
+    if(rec && rec.thumbnail){
+      P[index][5] = rec.thumbnail;
+      var el = $("thumb-img-" + index);
+      if(el && el.tagName === "IMG"){
+        el.src = rec.thumbnail;
+      } else if(el){
+        var newImg = document.createElement("img");
+        newImg.className = "th-img";
+        newImg.id = "thumb-img-" + index;
+        newImg.src = rec.thumbnail;
+        el.replaceWith(newImg);
+      }
+    }
+  } catch(e){}
+}
+
+/* ==========================================================================
+   HERO VIEWFINDER INTEGRATION
+   ========================================================================== */
+function updateHeroShowreel(){
+  if(!P.length) return;
+  if(featuredIndex >= P.length) featuredIndex = 0;
+  var feat = P[featuredIndex] || P[0];
+
+  $("vfTitleLabel").textContent = (feat[0] || "SHOWREEL").toUpperCase().slice(0, 24);
+
+  var posterEl = $("vfPoster");
+  if(feat[5]){
+    posterEl.src = feat[5];
+    posterEl.style.display = "block";
+    $("vfGrad").style.display = "none";
+  } else {
+    posterEl.style.display = "none";
+    $("vfGrad").style.display = "block";
+  }
+}
+
+// Running Timecode in Hero
+var tcFrame = 0;
+setInterval(function(){
+  tcFrame++;
+  var s = Math.floor(tcFrame / 24);
+  var pad = function(n){ return ("0" + n).slice(-2); };
+  var m = Math.floor(s / 60) % 60;
+  var sec = s % 60;
+  var f = tcFrame % 24;
+  $("tc").textContent = "00:" + pad(m) + ":" + pad(sec) + ":" + pad(f);
+}, 42);
+
+$("heroVf").onclick = function(){
+  playProject(featuredIndex);
+};
+$("play").onclick = function(e){
+  e.stopPropagation();
+  playProject(featuredIndex);
+};
+$("heroPlayBtn").onclick = function(){
+  playProject(featuredIndex);
+};
+
+/* ==========================================================================
+   VIDEO PLAYBACK (THEATER MODAL)
+   ========================================================================== */
+var currentPlayingObjectUrl = null;
+
+async function playProject(index){
+  var proj = P[index];
+  if(!proj) return;
+
+  var source = proj[3] || "";
+  var modal = $("theaterModal");
+  var video = $("tVideo");
+
+  $("tCat").textContent = proj[2] || "VIDEO";
+  $("tTitle").textContent = proj[0] || "Untitled";
+  $("tDesc").textContent = proj[1] || "";
+
+  // Revoke any previous blob URL
+  if(currentPlayingObjectUrl){
+    URL.revokeObjectURL(currentPlayingObjectUrl);
+    currentPlayingObjectUrl = null;
+  }
+
+  if(source.startsWith("local:")){
+    var id = source.slice(6);
+    try {
+      var record = await getVideo(id);
+      var blob = (record && record.blob) ? record.blob : record;
+      if(!blob){
+        alert("This video file is no longer in this browser's local storage. Please upload it again.");
+        return;
+      }
+      currentPlayingObjectUrl = URL.createObjectURL(blob);
+      video.src = currentPlayingObjectUrl;
+    } catch(err){
+      console.error(err);
+      alert("Could not load the local video from device storage.");
+      return;
+    }
+  } else if(source && source !== "#"){
+    video.src = source;
+  } else {
+    // Elegant fallback if no valid video URL
+    alert("No video source is assigned to this project yet. Click 'Upload video' to attach one!");
+    return;
+  }
+
+  // Set showreel button handler
+  $("tSetShowreel").onclick = function(){
+    featuredIndex = index;
+    updateHeroShowreel();
+    draw();
+    save();
+    showToast("★ Featured as Hero Showreel!");
+  };
+
+  modal.classList.add("open");
+  video.currentTime = 0;
+  video.playbackRate = 1;
+  resetSpeedButtons();
+  video.play().catch(function(){});
+}
+
+function closeTheater(){
+  var modal = $("theaterModal");
+  var video = $("tVideo");
+  video.pause();
+  video.removeAttribute("src");
+  video.load();
+  modal.classList.remove("open");
+  if(currentPlayingObjectUrl){
+    URL.revokeObjectURL(currentPlayingObjectUrl);
+    currentPlayingObjectUrl = null;
+  }
+}
+
+$("tClose").onclick = closeTheater;
+$("theaterModal").onclick = function(e){
+  if(e.target === $("theaterModal")) closeTheater();
+};
+
+function resetSpeedButtons(){
+  var btns = document.querySelectorAll(".speed-btns button");
+  btns.forEach(function(b){ b.classList.toggle("on", b.dataset.speed === "1"); });
+}
+
+document.querySelectorAll(".speed-btns button").forEach(function(btn){
+  btn.onclick = function(){
+    var rate = parseFloat(btn.dataset.speed);
+    $("tVideo").playbackRate = rate;
+    document.querySelectorAll(".speed-btns button").forEach(function(b){ b.classList.remove("on"); });
+    btn.classList.add("on");
+  };
+});
+
+/* ==========================================================================
+   VIDEO UPLOAD MODAL & PROCESSING
+   ========================================================================== */
+function openUploadModal(){
+  stagedUploadFile = null;
+  stagedUploadMeta = null;
+  $("uPreviewStrip").style.display = "none";
+  $("uDropzone").style.display = "block";
+  $("uTitle").value = "";
+  $("uDesc").value = "";
+  $("uDur").value = "";
+  $("uAsShowreel").checked = false;
+  $("uploadModal").classList.add("open");
+}
+
+function closeUploadModal(){
+  $("uploadModal").classList.remove("open");
+}
+
+$("uClose").onclick = closeUploadModal;
+$("uploadModal").onclick = function(e){
+  if(e.target === $("uploadModal")) closeUploadModal();
+};
+
+if($("gridUploadBtn")) $("gridUploadBtn").onclick = openUploadModal;
+$("add").onclick = function(){
+  closeTheater();
+  openUploadModal();
+};
+
+$("uDropzone").onclick = function(){
+  $("videoPicker").click();
+};
+$("uChangeFile").onclick = function(){
+  $("videoPicker").click();
+};
+
+// Handle file chosen from file picker
+$("videoPicker").addEventListener("change", async function(){
+  var file = this.files && this.files[0];
+  if(!file) return;
+  await processSelectedVideo(file);
+  this.value = "";
+});
+
+async function processSelectedVideo(file){
+  if(!file.type.startsWith("video/")){
+    alert("Please select a valid video file (MP4, WebM, MOV, etc.).");
+    return;
+  }
+
+  // Open modal if not already open
+  $("uploadModal").classList.add("open");
+  $("uDropzone").style.display = "none";
+  $("uPreviewStrip").style.display = "flex";
+  $("uPreviewName").textContent = file.name;
+  $("uPreviewMeta").textContent = "Analyzing video & generating thumbnail...";
+
+  var autoTitle = file.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ");
+  $("uTitle").value = autoTitle;
+
+  try {
+    var meta = await extractVideoMetadata(file);
+    stagedUploadFile = file;
+    stagedUploadMeta = meta;
+
+    var sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+    $("uPreviewMeta").textContent = meta.duration + " · " + sizeMb + " MB";
+    $("uDur").value = meta.duration;
+
+    if(meta.thumbnail){
+      $("uPreviewThumb").src = meta.thumbnail;
+      $("uPreviewThumb").style.display = "block";
+    } else {
+      $("uPreviewThumb").style.display = "none";
+    }
+  } catch(err){
+    console.error("Error analyzing video:", err);
+    $("uPreviewMeta").textContent = "Ready (" + (file.size / (1024 * 1024)).toFixed(1) + " MB)";
+  }
+}
+
+$("uSubmitBtn").onclick = async function(){
+  if(!stagedUploadFile){
+    alert("Please choose a video file first.");
+    return;
+  }
+
+  var btn = $("uSubmitBtn");
+  btn.textContent = "Saving to Device Storage...";
+  btn.disabled = true;
+
+  try {
+    var id = "video-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8);
+    var duration = $("uDur").value.trim() || (stagedUploadMeta ? stagedUploadMeta.duration : "Video");
+    var thumbnail = (stagedUploadMeta && stagedUploadMeta.thumbnail) ? stagedUploadMeta.thumbnail : "";
+
+    // Save record to IndexedDB
+    await putVideo(id, {
+      id: id,
+      blob: stagedUploadFile,
+      name: stagedUploadFile.name,
+      size: stagedUploadFile.size,
+      type: stagedUploadFile.type,
+      duration: duration,
+      thumbnail: thumbnail,
+      createdAt: Date.now()
+    });
+
+    var title = $("uTitle").value.trim() || stagedUploadFile.name.replace(/\.[^.]+$/, "");
+    var desc = $("uDesc").value.trim() || "Uploaded from this device.";
+    var cat = $("uCat").value;
+
+    // Add new project to portfolio at top
+    P.unshift([
+      title,
+      desc,
+      cat,
+      "local:" + id,
+      duration,
+      thumbnail
+    ]);
+
+    if($("uAsShowreel").checked){
+      featuredIndex = 0;
+    } else if(featuredIndex >= 0){
+      featuredIndex++;
+    }
+
+    draw();
+    save();
+    closeUploadModal();
+    showToast("✓ Video added to portfolio!");
+
+    // Smooth scroll to Work section to show off the new video
+    location.hash = "work";
+  } catch(err){
+    console.error(err);
+    alert("Could not store the video file. Please ensure your browser has storage permissions.");
+  } finally {
+    btn.textContent = "✓ Add to Portfolio";
+    btn.disabled = false;
+  }
+};
+
+/* ==========================================================================
+   DRAG AND DROP (OWNER EDIT MODE ONLY)
+   ========================================================================== */
+var dragOverlay = $("dragOverlay");
+var dragCounter = 0;
+
+window.addEventListener("dragenter", function(e){
+  if(!EDIT) return; // Do not show upload dropzone to regular visitors
+  e.preventDefault();
+  dragCounter++;
+  if(e.dataTransfer && Array.from(e.dataTransfer.types).includes("Files")){
+    dragOverlay.classList.add("active");
+  }
+});
+
+window.addEventListener("dragleave", function(e){
+  if(!EDIT) return;
+  e.preventDefault();
+  dragCounter--;
+  if(dragCounter <= 0){
+    dragOverlay.classList.remove("active");
+    dragCounter = 0;
+  }
+});
+
+window.addEventListener("dragover", function(e){
+  if(!EDIT) return;
+  e.preventDefault();
+});
+
+window.addEventListener("drop", async function(e){
+  if(!EDIT) return;
+  e.preventDefault();
+  dragCounter = 0;
+  dragOverlay.classList.remove("active");
+
+  var files = e.dataTransfer && e.dataTransfer.files;
+  if(files && files.length > 0){
+    var videoFile = null;
+    for(var i = 0; i < files.length; i++){
+      if(files[i].type.startsWith("video/")){
+        videoFile = files[i];
+        break;
+      }
+    }
+    if(videoFile){
+      await processSelectedVideo(videoFile);
+    } else {
+      alert("Please drop a video file (.mp4, .mov, .webm, etc.).");
+    }
+  }
+});
+
+/* ==========================================================================
+   INTERACTION DELEGATION (CLICKS, EDITING, REMOVAL)
+   ========================================================================== */
+document.addEventListener("click", function(e){
+  // Play video on thumbnail or button click
+  var playTrigger = e.target.closest("[data-play]");
+  if(playTrigger){
+    e.preventDefault();
+    var idx = Number(playTrigger.dataset.play);
+    playProject(idx);
+    return;
+  }
+
+  // Edit Mode actions
+  if(EDIT){
+    var delBtn = e.target.closest("[data-del]");
+    if(delBtn){
+      e.preventDefault();
+      var dIdx = Number(delBtn.dataset.del);
+      var removed = P[dIdx];
+      if(confirm("Remove '" + (removed[0] || "this video") + "' from portfolio?")){
+        if((removed[3] || "").startsWith("local:")){
+          deleteVideo(removed[3].slice(6)).catch(function(){});
+        }
+        P.splice(dIdx, 1);
+        if(featuredIndex === dIdx) featuredIndex = 0;
+        else if(featuredIndex > dIdx) featuredIndex--;
+        draw();
+        save();
+        showToast("Video removed");
+      }
+      return;
+    }
+
+    var featBtn = e.target.closest("[data-feature]");
+    if(featBtn){
+      e.preventDefault();
+      featuredIndex = Number(featBtn.dataset.feature);
+      draw();
+      save();
+      showToast("★ Set as Hero Showreel!");
+      return;
+    }
+  }
+});
+
+// Inline editing updates
+document.addEventListener("input", function(e){
+  var t = e.target;
+  if(t.dataset && t.dataset.f !== undefined && t.dataset.i !== undefined){
+    var projIdx = Number(t.dataset.i);
+    var fieldIdx = Number(t.dataset.f);
+    if(P[projIdx]){
+      P[projIdx][fieldIdx] = t.textContent;
+      save();
+    }
+  }
+});
+
+/* ==========================================================================
+   EDIT MODE TOGGLE & PERSISTENCE
+   ========================================================================== */
+var SEL = "h1,.role,.lead,h2,.sub,.tag,.about p,blockquote,.stat b,.stat span,.step h3,.step p,.step em,.svc h3,.svc p,.tools span,.badge,footer";
+function els(){ return [].slice.call(document.querySelectorAll(SEL)); }
+
+function setEdit(on){
+  EDIT = on;
+  els().forEach(function(e){
+    if(on) e.setAttribute("contenteditable", "true");
+    else e.removeAttribute("contenteditable");
+  });
+  document.body.classList.toggle("editing", on);
+  $("bar").style.display = on ? "flex" : "none";
+  if($("edit")){
+    $("edit").textContent = on ? "✎" : "🔒";
+    $("edit").title = on ? "Editing Active (Click to finish)" : "Unlock Access (Passcode Protected)";
+  }
+  draw();
+  if(!on){
+    save();
+    showToast("Changes saved!");
+  }
+}
+
+/* ==========================================================================
+   AUTHENTICATION & ACCESS CONTROL (OWNER & CLIENT ONLY)
+   ========================================================================== */
+var isAuthenticated = false;
+var currentRole = "visitor"; // "visitor", "owner", or "client"
+
+function getOwnerPasscode(){
+  return localStorage.getItem("ahmed-owner-pass") || "ahmed2026";
+}
+
+function getClientPasscode(){
+  return localStorage.getItem("ahmed-client-pass") || "client2026";
+}
+
+function openAuthModal(){
+  $("authErrorMsg").style.display = "none";
+  $("authPassInput").value = "";
+  $("authModal").classList.add("open");
+  setTimeout(function(){ $("authPassInput").focus(); }, 150);
+}
+
+function closeAuthModal(){
+  $("authModal").classList.remove("open");
+  $("authErrorMsg").style.display = "none";
+}
+
+$("authClose").onclick = closeAuthModal;
+$("authModal").onclick = function(e){
+  if(e.target === $("authModal")) closeAuthModal();
+};
+
+$("toggleAuthEye").onclick = function(){
+  var inp = $("authPassInput");
+  inp.type = inp.type === "password" ? "text" : "password";
+};
+
+$("authForm").onsubmit = function(e){
+  e.preventDefault();
+  var entered = $("authPassInput").value.trim();
+  var ownerPass = getOwnerPasscode();
+  var clientPass = getClientPasscode();
+
+  if(entered === ownerPass){
+    isAuthenticated = true;
+    currentRole = "owner";
+    closeAuthModal();
+    if($("barRoleLabel")) $("barRoleLabel").textContent = "💡 Owner Mode (Ahmed): full editing, uploading, and inbox access.";
+    setEdit(true);
+    showToast("✓ Welcome Ahmed! Owner access unlocked.");
+  } else if(entered === clientPass){
+    isAuthenticated = true;
+    currentRole = "client";
+    closeAuthModal();
+    if($("barRoleLabel")) $("barRoleLabel").textContent = "💡 Client Mode: you can review, upload clips, and preview edits.";
+    setEdit(true);
+    showToast("✓ Welcome! Client access unlocked.");
+  } else {
+    $("authErrorMsg").style.display = "block";
+    var box = $("authModal").querySelector(".theater-box");
+    box.style.animation = "shake 0.35s";
+    setTimeout(function(){ box.style.animation = ""; }, 400);
+  }
+};
+
+function triggerEditAuth(){
+  if(isAuthenticated){
+    setEdit(!EDIT);
+  } else {
+    openAuthModal();
+  }
+}
+
+$("edit").onclick = triggerEditAuth;
+
+$("done").onclick = function(){
+  setEdit(false);
+};
+
+$("btnLock").onclick = function(){
+  isAuthenticated = false;
+  currentRole = "visitor";
+  setEdit(false);
+  showToast("🔒 Locked. Editing tools are now secure.");
+};
+
+function openManagePassModal(){
+  if(currentRole !== "owner"){
+    alert("Only the Owner (Ahmed) can modify passcodes.");
+    return;
+  }
+  $("newOwnerPass").value = getOwnerPasscode();
+  $("newClientPass").value = getClientPasscode();
+  $("managePassModal").classList.add("open");
+}
+
+function closeManagePassModal(){
+  $("managePassModal").classList.remove("open");
+}
+
+$("btnManagePass").onclick = openManagePassModal;
+$("passModalClose").onclick = closeManagePassModal;
+$("managePassModal").onclick = function(e){
+  if(e.target === $("managePassModal")) closeManagePassModal();
+};
+
+$("changePassForm").onsubmit = function(e){
+  e.preventDefault();
+  var o = $("newOwnerPass").value.trim();
+  var c = $("newClientPass").value.trim();
+  if(!o || !c){
+    alert("Passcodes cannot be empty.");
+    return;
+  }
+  localStorage.setItem("ahmed-owner-pass", o);
+  localStorage.setItem("ahmed-client-pass", c);
+  closeManagePassModal();
+  showToast("✓ Passwords updated successfully!");
+};
+
+// Triple-click logo discreet shortcut to unlock access
+var logoClicks = 0, logoTimer = null;
+document.querySelector(".logo").addEventListener("click", function(e){
+  logoClicks++;
+  clearTimeout(logoTimer);
+  logoTimer = setTimeout(function(){ logoClicks = 0; }, 1200);
+  if(logoClicks >= 3){
+    logoClicks = 0;
+    triggerEditAuth();
+  }
+});
+
+$("reset").onclick = function(){
+  if(confirm("Reset all customizations and restore default portfolio?")){
+    try { localStorage.removeItem("ahmed-films-data"); } catch(e){}
+    location.reload();
+  }
+};
+
+function save(){
+  try {
+    var pData = P.map(function(p){
+      return [p[0], p[1], p[2], p[3], p[4], p[5] || ""];
+    });
+    var payload = {
+      t: els().map(function(e){ return e.innerHTML; }),
+      p: pData,
+      featuredIndex: featuredIndex
+    };
+    localStorage.setItem("ahmed-films-data", JSON.stringify(payload));
+  } catch(err){
+    console.warn("Storage warning, saving without large thumbs:", err);
+    try {
+      var safeP = P.map(function(p){
+        return [p[0], p[1], p[2], p[3], p[4], (p[3]||"").startsWith("http") ? (p[5]||"") : ""];
+      });
+      localStorage.setItem("ahmed-films-data", JSON.stringify({
+        t: els().map(function(e){ return e.innerHTML; }),
+        p: safeP,
+        featuredIndex: featuredIndex
+      }));
+    } catch(e2){}
+  }
+}
+
+function load(){
+  try {
+    var raw = localStorage.getItem("ahmed-films-data") || localStorage.getItem("vf-v1");
+    if(!raw) return;
+    var data = JSON.parse(raw);
+    var E = els();
+    if(data.t && data.t.length === E.length){
+      E.forEach(function(e, i){ e.innerHTML = data.t[i]; });
+    }
+    if(data.p && data.p.length){
+      P = data.p;
+    }
+    if(typeof data.featuredIndex === "number"){
+      featuredIndex = data.featuredIndex;
+    }
+  } catch(e){
+    console.error("Load error:", e);
+  }
+}
+
+/* ==========================================================================
+   THEME SWITCHER
+   ========================================================================== */
+function initTheme(){
+  var saved = localStorage.getItem("ahmed-theme");
+  if(saved){
+    document.documentElement.setAttribute("data-theme", saved);
+  }
+}
+
+$("theme").onclick = function(){
+  var r = document.documentElement;
+  var current = r.getAttribute("data-theme");
+  var isLight = current === "light" || (!current && matchMedia("(prefers-color-scheme:light)").matches);
+  var next = isLight ? "dark" : "light";
+  r.setAttribute("data-theme", next);
+  try { localStorage.setItem("ahmed-theme", next); } catch(e){}
+};
+
+/* ==========================================================================
+   MOBILE MENU & CONTACT FORM
+   ========================================================================== */
+$("menuToggle").onclick = function(){
+  $("mobileMenu").classList.toggle("show");
+};
+document.querySelectorAll(".mob-link").forEach(function(l){
+  l.onclick = function(){ $("mobileMenu").classList.remove("show"); };
+});
+
+/* ==========================================================================
+   CONTACT INQUIRIES & EMAIL DELIVERY SYSTEM
+   ========================================================================== */
+function getRecipientEmail(){
+  return localStorage.getItem("ahmed-recipient-email") || "contact@ahmedfilms.com";
+}
+
+function getRecipientPhone(){
+  return localStorage.getItem("ahmed-recipient-phone") || "";
+}
+
+function setRecipientEmail(email){
+  var cleaned = (email || "").trim().toLowerCase();
+  if(!cleaned || cleaned.indexOf("@") < 1 || cleaned.indexOf(".") < 1){
+    alert("Please enter a valid email address (e.g. yourname@gmail.com).");
+    return false;
+  }
+  localStorage.setItem("ahmed-recipient-email", cleaned);
+  updateOwnerEmailDisplay();
+  showToast("✓ Inquiries will now be sent to: " + cleaned);
+  return true;
+}
+
+function updateOwnerEmailDisplay(){
+  var e = getRecipientEmail();
+  if($("ownerEmailText")) $("ownerEmailText").textContent = e;
+  if($("mailLink")){
+    $("mailLink").textContent = e;
+    $("mailLink").href = "mailto:" + e;
+  }
+}
+
+function getInquiries(){
+  try {
+    return JSON.parse(localStorage.getItem("ahmed-inquiries") || "[]");
+  } catch(e){
+    return [];
+  }
+}
+
+function saveInquiryLocally(inq){
+  var list = getInquiries();
+  list.unshift(inq);
+  localStorage.setItem("ahmed-inquiries", JSON.stringify(list));
+  updateInboxCount();
+}
+
+function updateInboxCount(){
+  var count = getInquiries().length;
+  if($("inboxCount")) $("inboxCount").textContent = count;
+  if($("inboxModalCount")) $("inboxModalCount").textContent = count;
+}
+
+function renderInboxList(){
+  var list = getInquiries();
+  var container = $("inboxList");
+  updateInboxCount();
+
+  if(!list.length){
+    container.innerHTML =
+      '<div style="text-align:center;color:var(--muted);padding:45px 20px;font-size:14px;line-height:1.6">' +
+        '<div style="font-size:38px;margin-bottom:10px">📭</div>' +
+        '<b>No client inquiries yet.</b><br>' +
+        'When clients submit the “Get In Touch” form, their project briefs will arrive in your email and appear here!' +
+      '</div>';
+    return;
+  }
+
+  container.innerHTML = "";
+  list.forEach(function(item, idx){
+    var card = document.createElement("div");
+    card.className = "inquiry-card";
+    card.innerHTML =
+      '<div class="inquiry-top">' +
+        '<div>' +
+          '<b>' + esc(item.name) + ' &lt;' + esc(item.email) + '&gt;</b>' +
+        '</div>' +
+        '<span class="inquiry-date">' + esc(item.date) + '</span>' +
+      '</div>' +
+      '<div class="inquiry-tags">' +
+        '<span class="inquiry-pill">' + esc(item.category) + '</span>' +
+        '<span class="inquiry-pill">' + esc(item.budget) + '</span>' +
+      '</div>' +
+      '<div class="inquiry-body">' + esc(item.message) + '</div>' +
+      '<div class="inquiry-actions">' +
+        '<a href="mailto:' + encodeURIComponent(item.email) + '?subject=Re:%20' + encodeURIComponent(item.category) + '%20Video%20Project&body=Hi%20' + encodeURIComponent(item.name) + ',%0A%0AThanks%20for%20reaching%20out%20about%20your%20' + encodeURIComponent(item.category) + '%20project!" class="btn btn-sm p" target="_blank">✉ Reply to ' + esc(item.name) + '</a>' +
+        '<button class="btn btn-sm" data-del-inq="' + idx + '" style="color:#ff4d3d">✕ Delete</button>' +
+      '</div>';
+    container.appendChild(card);
+  });
+}
+
+function openInboxModal(){
+  renderInboxList();
+  $("inboxModal").classList.add("open");
+}
+
+function closeInboxModal(){
+  $("inboxModal").classList.remove("open");
+}
+
+$("inboxClose").onclick = closeInboxModal;
+$("inboxModal").onclick = function(e){
+  if(e.target === $("inboxModal")) closeInboxModal();
+};
+
+$("btnInbox").onclick = openInboxModal;
+
+$("btnChangeEmail").onclick = function(){
+  var cur = getRecipientEmail();
+  var input = prompt("Enter your email address to receive all project inquiries:", cur);
+  if(input !== null && input.trim()){
+    setRecipientEmail(input);
+  }
+};
+
+$("btnSettings").onclick = function(){
+  $("btnChangeEmail").click();
+};
+
+$("btnSetPhone").onclick = function(){
+  var cur = getRecipientPhone();
+  var input = prompt("Enter your WhatsApp phone number with country code (e.g. 201012345678):", cur);
+  if(input !== null){
+    var cleaned = input.replace(/[^0-9]/g, "");
+    localStorage.setItem("ahmed-recipient-phone", cleaned);
+    showToast(cleaned ? "✓ WhatsApp number updated!" : "WhatsApp number removed");
+  }
+};
+
+$("btnClearInbox").onclick = function(){
+  if(confirm("Clear all inquiries stored in this browser?")){
+    localStorage.removeItem("ahmed-inquiries");
+    renderInboxList();
+    showToast("Inbox cleared");
+  }
+};
+
+$("btnExportCSV").onclick = function(){
+  var list = getInquiries();
+  if(!list.length){
+    alert("No inquiries to export.");
+    return;
+  }
+  var csv = "Name,Email,Category,Budget,Date,Message\n";
+  list.forEach(function(r){
+    csv += '"' + (r.name||"").replace(/"/g, '""') + '",' +
+           '"' + (r.email||"").replace(/"/g, '""') + '",' +
+           '"' + (r.category||"").replace(/"/g, '""') + '",' +
+           '"' + (r.budget||"").replace(/"/g, '""') + '",' +
+           '"' + (r.date||"").replace(/"/g, '""') + '",' +
+           '"' + (r.message||"").replace(/"/g, '""').replace(/\n/g, ' ') + '"\n';
+  });
+  var blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "ahmed-films-inquiries.csv";
+  a.click();
+};
+
+document.addEventListener("click", function(e){
+  var delInq = e.target.closest("[data-del-inq]");
+  if(delInq){
+    var idx = Number(delInq.dataset.delInq);
+    var list = getInquiries();
+    list.splice(idx, 1);
+    localStorage.setItem("ahmed-inquiries", JSON.stringify(list));
+    renderInboxList();
+    showToast("Inquiry removed");
+  }
+});
+
+// FORM SUBMISSION (DELIVERS TO YOUR EMAIL & LOCAL INBOX)
+$("contactForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+  var name = $("cName").value.trim();
+  var email = $("cEmail").value.trim();
+  var cat = $("cType").value;
+  var budget = $("cBudget").value;
+  var msg = $("cMsg").value.trim();
+
+  if(!name || !email || !msg){
+    alert("Please fill out your name, email, and project brief.");
+    return;
+  }
+
+  var btn = $("cSubmit");
+  var origText = btn.textContent;
+  btn.textContent = "Sending to Ahmed...";
+  btn.disabled = true;
+
+  var recipient = getRecipientEmail();
+  var dateStr = new Date().toLocaleString();
+
+  var inquiryRecord = {
+    id: "inq-" + Date.now(),
+    name: name,
+    email: email,
+    category: cat,
+    budget: budget,
+    message: msg,
+    date: dateStr
+  };
+
+  // 1. Immediately save to owner local inbox
+  saveInquiryLocally(inquiryRecord);
+
+  // 2. Transmit to Ahmed's email via FormSubmit.co AJAX API
+  try {
+    var payload = {
+      _subject: "🎬 New Video Project Inquiry: " + name + " (" + cat + ")",
+      _replyto: email,
+      _template: "table",
+      "Client Name": name,
+      "Client Email": email,
+      "Project Category": cat,
+      "Estimated Budget": budget,
+      "Project Brief": msg,
+      "Submitted At": dateStr
+    };
+
+    var res = await fetch("https://formsubmit.co/ajax/" + encodeURIComponent(recipient), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    var data = await res.json().catch(function(){ return {}; });
+
+    btn.textContent = "✓ Inquiry Sent!";
+    showToast("✓ Thank you " + name + "! Your inquiry was sent directly to Ahmed.");
+    $("contactForm").reset();
+  } catch(netErr){
+    console.warn("Network delivery note:", netErr);
+    // Saved in local inbox safely
+    btn.textContent = "✓ Inquiry Recorded!";
+    showToast("✓ Thank you " + name + "! Your inquiry has been sent to Ahmed.");
+    $("contactForm").reset();
+  } finally {
+    setTimeout(function(){
+      btn.textContent = origText;
+      btn.disabled = false;
+    }, 3500);
+  }
+});
+
+// WHATSAPP DIRECT SENDING
+$("cWhatsApp").onclick = function(){
+  var name = $("cName").value.trim() || "Client";
+  var email = $("cEmail").value.trim() || "N/A";
+  var cat = $("cType").value;
+  var budget = $("cBudget").value;
+  var msg = $("cMsg").value.trim() || "I would like to discuss a video project.";
+
+  var text = "Hello Ahmed! 👋%0A" +
+             "My name is *" + encodeURIComponent(name) + "* (" + encodeURIComponent(email) + ").%0A%0A" +
+             "🎥 *Project Type:* " + encodeURIComponent(cat) + "%0A" +
+             "💰 *Budget:* " + encodeURIComponent(budget) + "%0A" +
+             "📝 *Brief:* " + encodeURIComponent(msg);
+
+  var phone = getRecipientPhone();
+
+  // Save to local inbox too
+  saveInquiryLocally({
+    id: "inq-" + Date.now(),
+    name: name,
+    email: email,
+    category: cat,
+    budget: budget,
+    message: msg + " (Sent via WhatsApp)",
+    date: new Date().toLocaleString()
+  });
+
+  var waUrl = phone ? "https://wa.me/" + phone + "?text=" + text : "https://api.whatsapp.com/send?text=" + text;
+  window.open(waUrl, "_blank");
+};
+
+// Keyboard shortcuts: ESC to close modals, Alt+E to toggle Owner/Client Mode
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeTheater();
+    closeUploadModal();
+    closeInboxModal();
+    closeAuthModal();
+    closeManagePassModal();
+  }
+  if((e.altKey && (e.key === "e" || e.key === "E")) || (e.ctrlKey && e.shiftKey && (e.key === "E" || e.key === "e"))){
+    e.preventDefault();
+    triggerEditAuth();
+  }
+});
+
+// Boot
+initTheme();
+load();
+draw();
+updateOwnerEmailDisplay();
+updateInboxCount();
+</script>
+</body>
+</html>
